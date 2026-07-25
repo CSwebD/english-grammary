@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EN-Gramamry — Learn English Grammar Clearly</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231F3A34'/%3E%3Ctext x='32' y='43' font-family='Georgia, serif' font-size='30' fill='%23E8D9A8' text-anchor='middle'%3EAa%3C/text%3E%3C/svg%3E">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+  --board: #1F3A34;
+  --board-dark: #142822;
+  --board-light: #2A4A42;
+  --chalk: #F3EFE3;
+  --chalk-dim: #C9C4B4;
+  --chalk-yellow: #E8D9A8;
+  --chalk-coral: #E8927C;
+  --wood: #8B6F47;
+  --wood-dark: #6B5335;
+  --line: rgba(243,239,227,0.16);
+  --radius: 4px;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+html{ scroll-behavior:smooth; }
+
+body{
+  background:var(--board);
+  color:var(--chalk);
+  font-family:'IBM Plex Sans', sans-serif;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:'';
+  position:fixed; inset:0;
+  background-image:
+    radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 3px 3px;
+  pointer-events:none;
+  z-index:1;
+  opacity:0.6;
+}
+
+.eyebrow{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:0.72rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--chalk-yellow);
+  display:flex;
+  align-items:center;
+  gap:0.6rem;
+}
+.eyebrow::before{
+  content:'';
+  width:22px; height:1px;
+  background:var(--chalk-yellow);
+  display:inline-block;
+}
+
+h1,h2,h3{ font-weight:600; }
+
+.script{
+  font-family:'Caveat', cursive;
+  font-weight:700;
+}
+
+a{ color:inherit; text-decoration:none; }
+
+.wrap{
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 2.5rem;
+}
+
+@media (max-width: 640px){
+  .wrap{ padding:0 1.25rem; }
+}
+
+/* ---------- NAV ---------- */
+nav{
+  position:sticky; top:0; z-index:50;
+  background:rgba(20,40,34,0.88);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+nav .wrap{
+  display:flex; align-items:center; justify-content:space-between;
+  height:72px;
+}
+.brand{
+  display:flex; align-items:center; gap:0.6rem;
+  font-family:'IBM Plex Mono', monospace;
+  font-weight:500;
+  font-size:1.05rem;
+  letter-spacing:0.02em;
+}
+.brand .mark{
+  width:34px; height:34px;
+  border:1.5px solid var(--chalk-yellow);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Caveat', cursive;
+  font-size:1.05rem;
+  color:var(--chalk-yellow);
+}
+.nav-links{
+  display:flex; gap:2.2rem;
+  font-size:0.9rem;
+  color:var(--chalk-dim);
+}
+.nav-links a{ transition:color 0.2s; position:relative; }
+.nav-links a:hover{ color:var(--chalk); }
+.nav-cta{
+  border:1px solid var(--chalk-dim);
+  padding:0.5rem 1.2rem;
+  border-radius:2px;
+  font-size:0.85rem;
+  font-family:'IBM Plex Mono', monospace;
+  transition:all 0.2s;
+}
+.nav-cta:hover{ border-color:var(--chalk-yellow); color:var(--chalk-yellow); }
+.nav-toggle{ display:none; }
+
+@media (max-width: 860px){
+  .nav-links{ display:none; }
+  .nav-toggle{ display:block; font-family:'IBM Plex Mono',monospace; font-size:0.85rem; border:1px solid var(--chalk-dim); padding:0.5rem 0.9rem; }
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;
+  padding:5.5rem 0 4rem;
+  border-bottom:1px solid var(--line);
+}
+.hero .wrap{
+  display:grid;
+  grid-template-columns:1.05fr 0.95fr;
+  gap:3.5rem;
+  align-items:center;
+}
+@media (max-width: 900px){
+  .hero .wrap{ grid-template-columns:1fr; }
+}
+
+.hero h1{
+  font-size:clamp(2.6rem, 5vw, 3.6rem);
+  line-height:1.08;
+  letter-spacing:-0.01em;
+  margin:1.1rem 0 1.4rem;
+}
+.hero h1 .script{
+  display:block;
+  color:var(--chalk-yellow);
+  font-size:1.35em;
+  line-height:1;
+  transform:rotate(-1.5deg);
+  margin-top:0.3rem;
+}
+.hero p.lede{
+  color:var(--chalk-dim);
+  font-size:1.08rem;
+  max-width:38ch;
+  margin-bottom:2.1rem;
+}
+.hero-ctas{ display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:2.5rem; }
+
+.btn{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:0.88rem;
+  padding:0.85rem 1.6rem;
+  border-radius:2px;
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  transition:all 0.2s ease;
+  cursor:pointer;
+  border:none;
+}
+.btn-primary{
+  background:var(--chalk-yellow);
+  color:var(--board-dark);
+  font-weight:500;
+}
+.btn-primary:hover{ background:#f0e3b8; transform:translateY(-1px); }
+.btn-ghost{
+  border:1px solid var(--chalk-dim);
+  color:var(--chalk);
+}
+.btn-ghost:hover{ border-color:var(--chalk); background:rgba(243,239,227,0.06); }
+
+.hero-meta{
+  display:flex; gap:2.2rem;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:0.8rem;
+  color:var(--chalk-dim);
+}
+.hero-meta b{ color:var(--chalk); display:block; font-size:1.3rem; font-family:'IBM Plex Sans',sans-serif; font-weight:600; }
+
+/* chalkboard diagram signature */
+.board-frame{
+  border:10px solid var(--wood);
+  border-radius:3px;
+  background:var(--board-dark);
+  box-shadow:0 20px 50px -20px rgba(0,0,0,0.6), inset 0 0 40px rgba(0,0,0,0.25);
+  padding:1.6rem;
+  position:relative;
+}
+.board-frame::after{
+  content:'';
+  position:absolute; left:-10px; right:-10px; bottom:-18px;
+  height:10px;
+  background:var(--wood-dark);
+  border-radius:0 0 3px 3px;
+}
+.diagram-caption{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:0.72rem;
+  color:var(--chalk-dim);
+  letter-spacing:0.08em;
+  margin-top:1rem;
+  text-align:center;
+}
+svg.diagram-svg{ width:100%; height:auto; display:block; }
+.chalk-stroke{
+  fill:none;
+  stroke:var(--chalk);
+  stroke-width:2.4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-dasharray:1000;
+  stroke-dashoffset:1000;
+  animation:draw 2.6s ease forwards;
+}
+.chalk-stroke.coral{ stroke:var(--chalk-coral); animation-delay:2.4s; }
+.chalk-stroke.yellow{ stroke:var(--chalk-yellow); animation-delay:1.4s; }
+@keyframes draw{ to{ stroke-dashoffset:0; } }
+.diagram-label{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:11px;
+  fill:var(--chalk-dim);
+  opacity:0;
+  animation:fadein 0.6s ease forwards;
+}
+@keyframes fadein{ to{ opacity:1; } }
+
+@media (prefers-reduced-motion: reduce){
+  .chalk-stroke{ stroke-dashoffset:0; animation:none; }
+  .diagram-label{ opacity:1; animation:none; }
+}
+
+/* ---------- STATS ---------- */
+.stats{
+  border-bottom:1px solid var(--line);
+  padding:2.6rem 0;
+}
+.stats .wrap{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:2rem;
+}
+@media (max-width: 760px){
+  .stats .wrap{ grid-template-columns:repeat(2,1fr); }
+}
+.stat b{
+  display:block;
+  font-size:2.1rem;
+  font-weight:600;
+  color:var(--chalk-yellow);
+}
+.stat span{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:0.76rem;
+  color:var(--chalk-dim);
+  letter-spacing:0.05em;
+}
+
+/* ---------- RULES GRID ---------- */
+.section{ padding:5.5rem 0; border-bottom:1px solid var(--line); }
+.section-head{ max-width:640px; margin-bottom:3rem; }
+.section-head h2{ font-size:clamp(1.8rem,3vw,2.4rem); margin-top:0.8rem; }
+.section-head p{ color:var(--chalk-dim); margin-top:0.9rem; }
+
+.rules-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:1.3rem;
+}
+@media (max-width: 900px){ .rules-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width: 600px){ .rules-grid{ grid-template-columns:1fr; } }
+
+.rule-card{
+  border:1px dashed var(--line);
+  border-radius:var(--radius);
+  padding:1.7rem;
+  position:relative;
+  transition:border-color 0.25s, transform 0.25s, background 0.25s;
+}
+.rule-card:hover{
+  border-color:var(--chalk-yellow);
+  background:rgba(232,217,168,0.045);
+  transform:translateY(-3px);
+}
+.rule-num{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:0.72rem;
+  color:var(--chalk-coral);
+  letter-spacing:0.1em;
+}
+.rule-card h3{ font-size:1.15rem; margin:0.7rem 0 0.5rem; }
+.rule-card p{ font-size:0.9rem; color:var(--chalk-dim); }
+.rule-example{
+  margin-top:1rem;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:0.78rem;
+  color:var(--chalk-dim);
+  border-left:2px solid var(--chalk-yellow);
+  padding-left:0.7rem;
+}
+.rule-example em{ color:var(--chalk-coral); font-style:normal; }
+
+/* ---------- LIBRARY / CHAPTERS ---------- */
+.library-list{ display:flex; flex-direction:column; gap:0.9rem; }
+
+.chapter{
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:rgba(243,239,227,0.02);
+  overflow:hidden;
+}
+.chapter[open]{ border-color:var(--chalk-yellow); }
+
+.chapter summary{
+  list-style:none;
+  cursor:pointer;
+  display:grid;
+  grid-template-columns:64px 1fr auto auto;
+  align-items:center;
+  gap:1.2rem;
+  padding:1.4rem 1.6rem;
+  transition:background 0.2s;
+}
+.chapter summary:hover{ background:rgba(232,217,168,0.05); }
+.chapter summary::-webkit-details-marker{ display:none; }
+
+.chapter-num{
+  font-family:'Caveat', cursive;
+  font-size:2.1rem;
+  color:var(--chalk-yellow);
+  line-height:1;
+}
+.chapter-title h3{ font-size:1.12rem; }
+.chapter-title p{ font-size:0.83rem; color:var(--chalk-dim); margin-top:0.15rem; }
+.chapter-count{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:0.72rem;
+  color:var(--chalk-dim);
+  border:1px solid var(--line);
+  padding:0.3rem 0.65rem;
+  border-radius:20px;
+  white-space:nowrap;
+}
+.chapter-chevron{
+  font-family:'IBM Plex Mono', monospace;
+  color:var(--chalk-dim);
+  transition:transform 0.25s;
+  font-size:0.9rem;
+}
+.chapter[open] .chapter-chevron{ transform:rotate(90deg); color:var(--chalk-yellow); }
+
+@media (max-width: 620px){
+  .chapter summary{ grid-template-columns:40px 1fr; }
+  .chapter-count, .chapter-chevron{ grid-column:2; justify-self:start; }
+}
+
+.chapter-body{
+  padding:0 1.6rem 1.6rem 1.6rem;
+  border-top:1px dashed var(--line);
+  margin-top:0;
+}
+.topic-list{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:0.5rem 1.5rem;
+  padding-top:1.2rem;
+}
+@media (max-width: 620px){ .topic-list{ grid-template-columns:1fr; } }
+.topic-list a{
+  display:flex;
+  align-items:baseline;
+  gap:0.6rem;
+  font-size:0.9rem;
+  color:var(--chalk-dim);
+  padding:0.45rem 0;
+  border-bottom:1px solid var(--line);
+  transition:color 0.2s, padding-left 0.2s;
+}
+.topic-list a:hover{ color:var(--chalk-yellow); padding-left:0.3rem; }
+.topic-list a .t-num{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:0.7rem;
+  color:var(--chalk-coral);
+  flex-shrink:0;
+}
+
+/* ---------- FEATURED CORRECTION ---------- */
+.correction-panel{
+  border:10px solid var(--wood);
+  background:var(--board-dark);
+  border-radius:3px;
+  padding:3rem 2.5rem;
+  box-shadow:inset 0 0 50px rgba(0,0,0,0.25);
+}
+.correction-line{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:clamp(1.05rem, 2.4vw, 1.5rem);
+  line-height:2.2;
+}
+.strike{
+  position:relative;
+  color:var(--chalk-dim);
+  opacity:0.55;
+}
+.strike::after{
+  content:'';
+  position:absolute; left:-2px; right:-2px; top:50%;
+  height:2px;
+  background:var(--chalk-coral);
+  transform:scaleX(0);
+  transform-origin:left;
+  animation:strike-in 0.5s ease forwards;
+  animation-delay:0.6s;
+}
+@keyframes strike-in{ to{ transform:scaleX(1); } }
+.fix{
+  color:var(--chalk-yellow);
+  font-family:'Caveat', cursive;
+  font-weight:700;
+  font-size:1.4em;
+  margin-left:0.3rem;
+  display:inline-block;
+  opacity:0;
+  animation:fix-in 0.4s ease forwards;
+  animation-delay:1.1s;
+}
+@keyframes fix-in{ from{ opacity:0; transform:translateY(6px) rotate(-3deg);} to{ opacity:1; transform:translateY(0) rotate(-3deg);} }
+.correction-note{
+  margin-top:1.6rem;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:0.78rem;
+  color:var(--chalk-dim);
+  display:flex; gap:0.6rem; align-items:flex-start;
+}
+.correction-note::before{ content:'✎'; color:var(--chalk-coral); }
+
+/* ---------- CATEGORIES / LEARN PATH ---------- */
+.path-row{
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+.path-item{
+  display:grid;
+  grid-template-columns:90px 1fr auto;
+  gap:1.5rem;
+  align-items:center;
+  padding:1.6rem 0;
+  border-top:1px solid var(--line);
+  transition:background 0.2s;
+}
+.path-item:last-child{ border-bottom:1px solid var(--line); }
+.path-item:hover{ background:rgba(243,239,227,0.03); }
+.path-num{ font-family:'Caveat', cursive; font-size:2.4rem; color:var(--chalk-yellow); }
+.path-body h3{ font-size:1.1rem; }
+.path-body p{ font-size:0.85rem; color:var(--chalk-dim); margin-top:0.2rem; }
+.path-tag{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:0.72rem;
+  color:var(--chalk-dim);
+  border:1px solid var(--line);
+  padding:0.35rem 0.7rem;
+  border-radius:20px;
+  white-space:nowrap;
+}
+@media (max-width: 620px){
+  .path-item{ grid-template-columns:50px 1fr; }
+  .path-tag{ grid-column:2; width:fit-content; }
+}
+
+/* ---------- NOTES / TESTIMONIALS ---------- */
+.notes-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+}
+@media (max-width: 860px){ .notes-grid{ grid-template-columns:1fr; } }
+.note-card{
+  background:var(--chalk);
+  color:var(--board-dark);
+  border-radius:2px;
+  padding:1.8rem;
+  transform:rotate(-1deg);
+  box-shadow:0 15px 30px -12px rgba(0,0,0,0.4);
+  position:relative;
+}
+.note-card:nth-child(2){ transform:rotate(0.8deg); }
+.note-card:nth-child(3){ transform:rotate(-0.6deg); }
+.note-card::before{
+  content:'';
+  position:absolute; top:-8px; left:50%; transform:translateX(-50%);
+  width:34px; height:14px;
+  background:rgba(232,146,124,0.85);
+  border-radius:1px;
+}
+.note-card p{ font-family:'Caveat', cursive; font-size:1.4rem; line-height:1.35; font-weight:700; }
+.note-card .who{
+  margin-top:1rem;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:0.72rem;
+  color:#5c5646;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+}
+
+/* ---------- CTA ---------- */
+.cta-section{
+  text-align:center;
+  padding:6rem 0;
+}
+.cta-section h2{ font-size:clamp(2rem,4vw,2.8rem); max-width:20ch; margin:1rem auto 1.6rem; }
+.cta-form{
+  display:flex; gap:0.8rem; justify-content:center; flex-wrap:wrap;
+  max-width:460px; margin:0 auto;
+}
+.cta-form input{
+  flex:1; min-width:220px;
+  background:transparent;
+  border:1px solid var(--chalk-dim);
+  padding:0.85rem 1.1rem;
+  color:var(--chalk);
+  font-family:'IBM Plex Mono', monospace;
+  font-size:0.85rem;
+  border-radius:2px;
+}
+.cta-form input::placeholder{ color:var(--chalk-dim); }
+.cta-form input:focus{ outline:2px solid var(--chalk-yellow); outline-offset:2px; }
+.cta-note{ margin-top:1rem; font-size:0.78rem; color:var(--chalk-dim); font-family:'IBM Plex Mono', monospace; }
+
+/* ---------- FOOTER ---------- */
+footer{ padding:3rem 0; }
+footer .wrap{
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.5rem;
+}
+.footer-links{ display:flex; gap:1.8rem; font-size:0.82rem; color:var(--chalk-dim); }
+.footer-links a:hover{ color:var(--chalk); }
+.footer-copy{ font-family:'IBM Plex Mono', monospace; font-size:0.75rem; color:var(--chalk-dim); }
+
+button:focus-visible, a:focus-visible, input:focus-visible{
+  outline:2px solid var(--chalk-yellow);
+  outline-offset:2px;
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="mark">Aa</span> EN-Gramamry</div>
+    <div class="nav-links">
+      <a href="#library">Library</a>
+      <a href="#path">Learning Path</a>
+      <a href="#practice">Practice</a>
+      <a href="#stories">Stories</a>
+    </div>
+    <a href="#start" class="nav-cta">Start free →</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">English grammar, taught plainly</div>
+      <h1>
+        Stop guessing.
+        <span class="script">Start writing with confidence.</span>
+      </h1>
+      <p class="lede">Every rule explained the way a good teacher would explain it on the board — one clear example, one common mistake, one fix. No jargon left unexplained.</p>
+      <div class="hero-ctas">
+        <a href="#start" class="btn btn-primary">Start learning free →</a>
+        <a href="#library" class="btn btn-ghost">Browse the library</a>
+      </div>
+      <div class="hero-meta">
+        <div><b>44</b>topics in 6 chapters</div>
+        <div><b>860+</b>practice sentences</div>
+        <div><b>4.8/5</b>learner rating</div>
+      </div>
+    </div>
+
+    <div class="board-frame">
+      <svg class="diagram-svg" viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg">
+        <!-- sentence diagram: "She quickly finished her homework." -->
+        <line x1="30" y1="150" x2="390" y2="150" class="chalk-stroke" style="animation-delay:0.1s"/>
+        <line x1="110" y1="150" x2="110" y2="190" class="chalk-stroke" style="animation-delay:0.4s"/>
+        <line x1="230" y1="150" x2="230" y2="120" class="chalk-stroke yellow"/>
+        <line x1="300" y1="150" x2="300" y2="190" class="chalk-stroke coral"/>
+        <text x="35" y="145" class="diagram-label" style="animation-delay:1.1s">She</text>
+        <text x="115" y="175" class="diagram-label" style="animation-delay:1.3s">subject</text>
+        <text x="200" y="115" class="diagram-label" style="animation-delay:1.5s">quickly (adverb)</text>
+        <text x="245" y="145" class="diagram-label" style="animation-delay:1.7s">finished</text>
+        <text x="305" y="175" class="diagram-label" style="animation-delay:2.7s">object</text>
+        <text x="255" y="175" class="diagram-label" style="animation-delay:2.9s">her homework</text>
+        <text x="20" y="40" class="script" fill="var(--chalk-coral)" font-size="26" style="animation:fadein 0.6s ease forwards; animation-delay:3.1s; opacity:0;">verb + object agree ✓</text>
+      </svg>
+      <div class="diagram-caption">FIG. 01 — SENTENCE DIAGRAM, DRAWN LIVE</div>
+    </div>
+  </div>
+</header>
+
+<section class="stats">
+  <div class="wrap">
+    <div class="stat"><b>92%</b><span>FEWER REPEATED MISTAKES AFTER 4 WEEKS</span></div>
+    <div class="stat"><b>11 MIN</b><span>AVG. DAILY LESSON LENGTH</span></div>
+    <div class="stat"><b>6</b><span>CORE GRAMMAR CATEGORIES</span></div>
+    <div class="stat"><b>24/7</b><span>SELF-PACED ACCESS</span></div>
+  </div>
+</section>
+
+<section class="section" id="library">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The library</div>
+      <h2>Every rule, organized into chapters</h2>
+      <p>Open a chapter to see its full table of contents. Each topic is a short, self-contained lesson — read them in order, or jump straight to the one you need.</p>
+    </div>
+
+    <div class="library-list">
+
+      <details class="chapter" open>
+        <summary>
+          <span class="chapter-num">01</span>
+          <span class="chapter-title"><h3>Tenses</h3><p>How to place an action correctly in time.</p></span>
+          <span class="chapter-count">12 topics</span>
+          <span class="chapter-chevron">›</span>
+        </summary>
+        <div class="chapter-body">
+          <div class="topic-list">
+            <a href="#"><span class="t-num">1.1</span> Present Simple</a>
+            <a href="#"><span class="t-num">1.2</span> Present Continuous</a>
+            <a href="#"><span class="t-num">1.3</span> Present Perfect</a>
+            <a href="#"><span class="t-num">1.4</span> Present Perfect Continuous</a>
+            <a href="#"><span class="t-num">1.5</span> Past Simple</a>
+            <a href="#"><span class="t-num">1.6</span> Past Continuous</a>
+            <a href="#"><span class="t-num">1.7</span> Past Perfect</a>
+            <a href="#"><span class="t-num">1.8</span> Past Perfect Continuous</a>
+            <a href="#"><span class="t-num">1.9</span> Future Simple</a>
+            <a href="#"><span class="t-num">1.10</span> Future Continuous</a>
+            <a href="#"><span class="t-num">1.11</span> Future Perfect</a>
+            <a href="#"><span class="t-num">1.12</span> Future Perfect Continuous</a>
+          </div>
+        </div>
+      </details>
+
+      <details class="chapter">
+        <summary>
+          <span class="chapter-num">02</span>
+          <span class="chapter-title"><h3>Punctuation</h3><p>Where marks belong, and what they change.</p></span>
+          <span class="chapter-count">7 topics</span>
+          <span class="chapter-chevron">›</span>
+        </summary>
+        <div class="chapter-body">
+          <div class="topic-list">
+            <a href="#"><span class="t-num">2.1</span> Commas</a>
+            <a href="#"><span class="t-num">2.2</span> Semicolons</a>
+            <a href="#"><span class="t-num">2.3</span> Colons</a>
+            <a href="#"><span class="t-num">2.4</span> Apostrophes</a>
+            <a href="#"><span class="t-num">2.5</span> Quotation Marks</a>
+            <a href="#"><span class="t-num">2.6</span> Hyphens &amp; Dashes</a>
+            <a href="#"><span class="t-num">2.7</span> Capitalization</a>
+          </div>
+        </div>
+      </details>
+
+      <details class="chapter">
+        <summary>
+          <span class="chapter-num">03</span>
+          <span class="chapter-title"><h3>Parts of Speech</h3><p>The building blocks every sentence is made from.</p></span>
+          <span class="chapter-count">8 topics</span>
+          <span class="chapter-chevron">›</span>
+        </summary>
+        <div class="chapter-body">
+          <div class="topic-list">
+            <a href="#"><span class="t-num">3.1</span> Nouns</a>
+            <a href="#"><span class="t-num">3.2</span> Pronouns</a>
+            <a href="#"><span class="t-num">3.3</span> Verbs</a>
+            <a href="#"><span class="t-num">3.4</span> Adjectives</a>
+            <a href="#"><span class="t-num">3.5</span> Adverbs</a>
+            <a href="#"><span class="t-num">3.6</span> Prepositions</a>
+            <a href="#"><span class="t-num">3.7</span> Conjunctions</a>
+            <a href="#"><span class="t-num">3.8</span> Interjections</a>
+          </div>
+        </div>
+      </details>
+
+      <details class="chapter">
+        <summary>
+          <span class="chapter-num">04</span>
+          <span class="chapter-title"><h3>Sentence Structure</h3><p>Joining ideas without losing control of the sentence.</p></span>
+          <span class="chapter-count">6 topics</span>
+          <span class="chapter-chevron">›</span>
+        </summary>
+        <div class="chapter-body">
+          <div class="topic-list">
+            <a href="#"><span class="t-num">4.1</span> Simple Sentences</a>
+            <a href="#"><span class="t-num">4.2</span> Compound Sentences</a>
+            <a href="#"><span class="t-num">4.3</span> Complex Sentences</a>
+            <a href="#"><span class="t-num">4.4</span> Compound-Complex Sentences</a>
+            <a href="#"><span class="t-num">4.5</span> Fragments &amp; Run-ons</a>
+            <a href="#"><span class="t-num">4.6</span> Clauses</a>
+          </div>
+        </div>
+      </details>
+
+      <details class="chapter">
+        <summary>
+          <span class="chapter-num">05</span>
+          <span class="chapter-title"><h3>Prepositions</h3><p>The small words that carry more weight than their size suggests.</p></span>
+          <span class="chapter-count">5 topics</span>
+          <span class="chapter-chevron">›</span>
+        </summary>
+        <div class="chapter-body">
+          <div class="topic-list">
+            <a href="#"><span class="t-num">5.1</span> Prepositions of Time</a>
+            <a href="#"><span class="t-num">5.2</span> Prepositions of Place</a>
+            <a href="#"><span class="t-num">5.3</span> Prepositions of Movement</a>
+            <a href="#"><span class="t-num">5.4</span> Prepositional Phrases</a>
+            <a href="#"><span class="t-num">5.5</span> Commonly Confused Pairs</a>
+          </div>
+        </div>
+      </details>
+
+      <details class="chapter">
+        <summary>
+          <span class="chapter-num">06</span>
+          <span class="chapter-title"><h3>Common Mistakes</h3><p>The errors that show up again and again in real writing.</p></span>
+          <span class="chapter-count">6 topics</span>
+          <span class="chapter-chevron">›</span>
+        </summary>
+        <div class="chapter-body">
+          <div class="topic-list">
+            <a href="#"><span class="t-num">6.1</span> Subject–Verb Agreement</a>
+            <a href="#"><span class="t-num">6.2</span> Its vs. It's</a>
+            <a href="#"><span class="t-num">6.3</span> Then vs. Than</a>
+            <a href="#"><span class="t-num">6.4</span> Affect vs. Effect</a>
+            <a href="#"><span class="t-num">6.5</span> Who vs. Whom</a>
+            <a href="#"><span class="t-num">6.6</span> Double Negatives</a>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="practice">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">See a correction happen</div>
+      <h2>This is how every lesson ends</h2>
+      <p>A real sentence, a mistake circled, a fix explained — the same three steps, every single time.</p>
+    </div>
+
+    <div class="correction-panel">
+      <div class="correction-line">
+        "Me and him <span class="strike">was</span><span class="fix">were</span> late to the meeting <span class="strike">because of</span><span class="fix">since</span> the train stopped."
+      </div>
+      <div class="correction-note">Subject pronouns come first — "He and I" — and the verb has to match a plural subject: <em>were</em>, not <em>was</em>.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="path">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">How the course is built</div>
+      <h2>One learning path, five stages</h2>
+      <p>Start wherever your grammar is weakest — most learners take about six weeks front to back.</p>
+    </div>
+
+    <div class="path-row">
+      <div class="path-item">
+        <div class="path-num">01</div>
+        <div class="path-body"><h3>Diagnostic</h3><p>A 10-minute placement test finds exactly which rules need work.</p></div>
+        <div class="path-tag">10 MIN</div>
+      </div>
+      <div class="path-item">
+        <div class="path-num">02</div>
+        <div class="path-body"><h3>Guided lessons</h3><p>Short explanations with real, everyday example sentences.</p></div>
+        <div class="path-tag">SELF-PACED</div>
+      </div>
+      <div class="path-item">
+        <div class="path-num">03</div>
+        <div class="path-body"><h3>Correction drills</h3><p>Spot and fix the mistake in someone else's sentence before writing your own.</p></div>
+        <div class="path-tag">DAILY</div>
+      </div>
+      <div class="path-item">
+        <div class="path-num">04</div>
+        <div class="path-body"><h3>Writing practice</h3><p>Apply the rule in a short paragraph of your own, checked line by line.</p></div>
+        <div class="path-tag">WEEKLY</div>
+      </div>
+      <div class="path-item">
+        <div class="path-num">05</div>
+        <div class="path-body"><h3>Review &amp; retest</h3><p>Rules you got wrong resurface later, spaced out, until they stick.</p></div>
+        <div class="path-tag">ONGOING</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="stories" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">From learners</div>
+      <h2>Notes off the board</h2>
+    </div>
+    <div class="notes-grid">
+      <div class="note-card">
+        <p>"I finally understand when to use 'who' vs 'whom' — three years of guessing, gone in one lesson."</p>
+        <div class="who">— Marta, marketing writer</div>
+      </div>
+      <div class="note-card">
+        <p>"The correction drills are addictive. I check my own emails differently now."</p>
+        <div class="who">— Daniel, customer support lead</div>
+      </div>
+      <div class="note-card">
+        <p>"Best explanation of comma splices I've ever read — and I've read a lot of them."</p>
+        <div class="who">— Priya, grad student</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="start">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center;">Free to start</div>
+    <h2>Pick up a piece of chalk and begin.</h2>
+    <form class="cta-form" onsubmit="event.preventDefault(); this.querySelector('input').value=''; this.querySelector('button').textContent='Check your inbox →';">
+      <input type="email" placeholder="you@email.com" required>
+      <button type="submit" class="btn btn-primary">Get started →</button>
+    </form>
+    <div class="cta-note">No credit card. Unsubscribe anytime.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><span class="mark">Aa</span> EN-Gramamry</div>
+    <div class="footer-links">
+      <a href="#library">Library</a>
+      <a href="#path">Learning Path</a>
+      <a href="#practice">Practice</a>
+      <a href="#stories">Stories</a>
+    </div>
+    <div class="footer-copy">© 2026 EN-Gramamry</div>
+  </div>
+</footer>
+
+</body>
+</html>
